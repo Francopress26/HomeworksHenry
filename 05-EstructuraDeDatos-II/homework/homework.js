@@ -11,7 +11,42 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
   En caso de que la búsqueda no arroje resultados, search debe retornar null.
 */
 
-function LinkedList() {}
+function LinkedList() {
+ this.head=null;
+function Node(data) {
+  this.data=data
+  this.next=null
+}
+
+
+}
+LinkedList.prototype.add(data)=function(data){
+  var node = new Node(data)
+  var actual=this.head
+  if(!actual){
+    this.head=node;
+    return node
+  }
+  while(actual.next){
+    actual=actual.next
+  }
+  actual.next=node
+  return node
+}
+
+LinkedList.prototype.remove=function (List) {
+  if(this.head==null){
+    return "Vacio"
+  }
+   var actual=this.head
+  while(actual.next){
+    actual=actual.next
+  }
+  actual=null
+  return List
+}
+
+
 
 function Node(value) {}
 
