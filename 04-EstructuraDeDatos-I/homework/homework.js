@@ -52,7 +52,6 @@ function Queue() {
         return undefined
       }
     }
-
     Queue.prototype.size=function() {
       return this.cola.length
     }

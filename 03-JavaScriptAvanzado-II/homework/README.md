@@ -16,6 +16,25 @@ Para ejecutar los test, anda a esta carpeta y ejecutá:
 Crear un método `repeatify` que este disponible para _todos_ los objetos `Strings`. Esta función debe aceptar un `entero` que indica cuantas veces el string tiene que repetirse. La función retorna el string repetido el número de veces que indicamos. Controlar que el número no sea menor que cero, y si es cero que devuelva `''` (String vacío).
 
 ```javascript
+String.prototype.repeatify=function(num){
+        var num2=num
+    return function(str){
+    if(num2<0){
+        return "Numero no valido ${num}"
+    }else if(num2==0){
+        return "Numero es 0"
+    }else{
+        let Str2=""
+        for(i=0;i<num2;i++){
+            Str2=Str2+Str
+        }
+        return Str2
+    }
+     }
+    
+}
+const nuevoStr =String.repeatify();
+console.log(nuevoStr(3,'hola'));
 console.log('hola'.repeatify(3));   //holaholahola
 ```
 
