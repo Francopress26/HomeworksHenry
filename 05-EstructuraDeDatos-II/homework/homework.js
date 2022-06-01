@@ -13,42 +13,80 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
 
 function LinkedList() {
  this.head=null;
-function Node(data) {
-  this.data=data
+}
+
+
+
+
+
+LinkedList.prototype.add=function(value){
+  var node = new Node(value)
+  
+  if(!this.head){ // Si la lista esta vacia this.head===null
+    this.head=node; // Ahora apunta a mi nuevo nodo, y ese apunta a null
+    return node
+  }else{
+    //Si la lista tiene al menos un elemento
+    let current =this.head // le asigno al current el primero
+    while(current.next){ // Mientras haya un siguiente
+      current=current.next //le asigno al current el siguiente
+    }
+    current.next=node // el siguiente una vez sea null, pasa a tomar el valor del nodo que nos enviaron x parametro
+    return node
+  }
+
+
+} 
+
+LinkedList.prototype.remove=function () {
+  let current = this.head
+  if(!this.head){ // Si la lista esta vacia this.head===null
+    return null
+  }
+  //Si tiene un solo elemento
+  if(!current.next){
+    let UnicoValue=current.value // guardo el unico valor de la lista
+    this.head=null // dejo la lista en null
+    return UnicoValue // retorno el ultimo valor que borre
+  }
+  while(current.next.next){ // Mientras el siguiente del siguiente exista(para no quedar parado en null)
+    current=current.next // al actual le asigno el siguiente
+
+  }
+  let LastValue=current.next.value // guardo en un auxiliar el valor que voy a borrar
+  current.next=null // lo borro
+  return LastValue // lo devuelvo
+}
+
+LinkedList.prototype.search=function(arg){
+  let current = this.head
+  while(current){
+    //es una funcion?
+    if(typeof arg === 'function'){
+
+      // Si esto me da true significa que arg es una funcion
+      if(arg(current.value)){ // true??
+        
+        return current.value
+      }
+    }else{
+    if(current.value===arg){
+      return arg
+    }
+  }
+    current=current.next 
+
+  }
+  //Si llega aca no encontró al valor buscado
+  return null
+}
+function Node(value) {
+  this.value=value
   this.next=null
 }
 
 
-}
-LinkedList.prototype.add(data)=function(data){
-  var node = new Node(data)
-  var actual=this.head
-  if(!actual){
-    this.head=node;
-    return node
-  }
-  while(actual.next){
-    actual=actual.next
-  }
-  actual.next=node
-  return node
-}
 
-LinkedList.prototype.remove=function (List) {
-  if(this.head==null){
-    return "Vacio"
-  }
-   var actual=this.head
-  while(actual.next){
-    actual=actual.next
-  }
-  actual=null
-  return List
-}
-
-
-
-function Node(value) {}
 
 /*
 Implementar la clase HashTable.
